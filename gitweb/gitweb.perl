@@ -4,8 +4,10 @@
 #
 # (C) 2005-2006, Kay Sievers <kay.sievers@vrfy.org>
 # (C) 2005, Christian Gierke
-#
+# (C) 2020, qorg11 
 # This program is licensed under the GPLv2
+
+# Changes: Adding aditional formats for snapshots
 
 use 5.008;
 use strict;
@@ -235,11 +237,22 @@ our %known_snapshot_formats = (
 		'compressor' => ['xz'],
 		'disabled' => 1},
 
-	'zip' => {
+        'tar' => {
+	        'display' => 'tar',
+	        'type' => 'application/tar',
+	        'suffix' => '.tar',
+	        'format' => 'tar'},
+        'zip' => {
 		'display' => 'zip',
 		'type' => 'application/x-zip',
 		'suffix' => '.zip',
 		'format' => 'zip'},
+        'lzip' => {
+            'display' => 'lzip',
+	    'type' => 'application/lzip',
+	    'suffix' => '.tar.lz',
+	    'format' => 'tar',
+	    'compressor' => ['lz']},
 );
 
 # Aliases so we understand old gitweb.snapshot values in repository
